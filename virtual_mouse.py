@@ -32,21 +32,14 @@ def countFingers(image, hand_landmarks, handNo=0):
 		landmarks = hand_landmarks[handNo].landmark
 
         # Conte os dedos
-		fingers = []
+		#Passo 1
 
 		for lm_index in tipIds:
             # Obtenha os valores y da ponta e da parte inferior do dedo
-			finger_tip_y = landmarks[lm_index].y 
-			finger_bottom_y = landmarks[lm_index - 2].y
+			#Passo 2
 
             # Verifique se ALGUM DEDO está ABERTO ou FECHADO
-			if lm_index !=4:
-				if finger_tip_y < finger_bottom_y:
-					fingers.append(1)
-
-
-				if finger_tip_y > finger_bottom_y:
-					fingers.append(0)
+			#Passo 3
 
 		totalFingers = fingers.count(1)
 
@@ -82,16 +75,7 @@ def countFingers(image, hand_landmarks, handNo=0):
 		mouse.position = (relative_mouse_x, relative_mouse_y)
 
 		# Verifique as condições de formação da PINÇA
-		if distance > 40:
-			if pinch == True:
-				pinch = False			
-				mouse.release(Button.left)
-
-		if distance <= 40 :
-			if(pinch==False):
-				pinch=True
-				mouse.press(Button.left)
-
+		#Passo 4
 
 # Defina uma função para 
 def drawHandLanmarks(image, hand_landmarks):
